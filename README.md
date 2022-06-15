@@ -22,6 +22,7 @@ bin/importmap pin js-cookie
 so we can use it
 ```
 // app/javascript/browser_timezone_cookie.js
+// https://github.com/duleorlovic/browser_timezone/blob/main/app/javascript/browser_timezone_cookie.js
 import Cookies from 'js-cookie'
 
 Cookies.set(

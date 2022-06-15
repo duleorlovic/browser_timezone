@@ -19,6 +19,7 @@ class TimezoneFromCookieForUserTest < ActiveSupport::TestCase
   test "update users.timezone_manual from browser_timezone" do
     user = users(:user)
     result = TimezoneFromCookieForUser.new(user).perform "Europe/London"
+    assert result.success?
     assert_equal "Europe/London", user.timezone_browser
   end
 

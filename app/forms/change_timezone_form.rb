@@ -1,3 +1,4 @@
+# https://github.com/duleorlovic/browser_timezone/blob/main/app/forms/change_timezone_form.rb
 class ChangeTimezoneForm
   include ActiveModel::Model
 
@@ -23,8 +24,8 @@ class ChangeTimezoneForm
   def all_zones
     ActiveSupport::TimeZone.all.map do |time_zone|
       # We save tzinfo.name in db (second value)
-      # ["(GMT+00:00) London", "Europe/London"],
-      [time_zone.to_s, time_zone.tzinfo.name]
+      # ["(GMT+00:00) London Europe/London", "Europe/London"],
+      ["#{time_zone} #{time_zone.tzinfo.name}", time_zone.tzinfo.name]
     end
   end
 end

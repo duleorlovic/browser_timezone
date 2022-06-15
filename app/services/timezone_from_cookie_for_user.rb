@@ -1,3 +1,4 @@
+# https://github.com/duleorlovic/browser_timezone/blob/main/app/services/timezone_from_cookie_for_user.rb
 class TimezoneFromCookieForUser
   def initialize(user = nil)
     @user = user
@@ -9,9 +10,7 @@ class TimezoneFromCookieForUser
         Time.find_zone @user.timezone_manual
       else
         timezone_browser = find_browser_timezone browser_timezone
-        if @user.present? && timezone_browser.present?
-          @user.update! timezone_browser: timezone_browser.tzinfo.name
-        end
+        @user.update! timezone_browser: timezone_browser.tzinfo.name if @user.present? && timezone_browser.present?
         timezone_browser
       end
     Result.new "OK", timezone: timezone || Time.zone
